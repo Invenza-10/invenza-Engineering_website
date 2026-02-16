@@ -1,4 +1,4 @@
-import styles from "./Industries.module.css";
+import styles from "./industries.module.css";
 import i1Soap from "@/assets/images/industries/i1_soap.webp";
 import i2Detergent from "@/assets/images/industries/i2_detergent.webp";
 import i3Spray from "@/assets/images/industries/i3_spray.webp";
