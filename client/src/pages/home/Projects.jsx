@@ -1,4 +1,4 @@
-import styles from "./Projects.module.css";
+import styles from "./projects.module.css";
 import p1 from "@/assets/images/home/projects/turnkey1_1000.webp";
 import p2 from "@/assets/images/home/projects/turnkey2_1000.webp";
 import LocationIcon from "@/assets/icons/location.svg?react";
