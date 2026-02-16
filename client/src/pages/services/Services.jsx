@@ -1,5 +1,5 @@
 import styles from "./Services.module.css";
-import s0 from "@/assets/images/s0.jpg";
+import s0 from "@/assets/images/services/s0.webp";
 import ServicesCarousel from "./ServicesCarousel";
 
 import { useNavigate } from "react-router-dom";

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import styles from "./ServicesCarousel.module.css";
-import s1 from "@/assets/images/s1_specialized.jpg";
-import s2 from "@/assets/images/s2_dedicated.jpg";
-import s3 from "@/assets/images/s3_regular.jpg";
-import s4 from "@/assets/images/s4_on_demand.jpg";
+import s1 from "@/assets/images/services/s1_specialized.webp";
+import s2 from "@/assets/images/services/s2_dedicated.webp";
+import s3 from "@/assets/images/services/s3_regular.webp";
+import s4 from "@/assets/images/services/s4_on_demand.webp";
 import CarouselNav from "@/components/ui/navButton/CarouselNav";
 
 const services = [

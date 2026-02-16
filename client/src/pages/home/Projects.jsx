@@ -1,6 +1,6 @@
 import styles from "./Projects.module.css";
-import p1 from "@/assets/images/turnkey_2.png";
-import p2 from "@/assets/images/turnkey.png";
+import p1 from "@/assets/images/home/projects/turnkey1_1000.webp";
+import p2 from "@/assets/images/home/projects/turnkey2_1000.webp";
 import LocationIcon from "@/assets/icons/location.svg?react";
 // import ArrowIcon from "@/assets/icons/arrow.svg?react";
 import CarouselNav from "@/components/ui/navButton/CarouselNav";

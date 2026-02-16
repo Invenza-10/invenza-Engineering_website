@@ -1,11 +1,10 @@
-import styles from "./industries.module.css";
-import p1 from "@/assets/images/factory.png";
-import i1Soap from "@/assets/images/i1_soap.png";
-import i2Detergent from "@/assets/images/i2_detergent.png";
-import i3Spray from "@/assets/images/i3_spray.png";
-import i4Bakery from "@/assets/images/i4_bakery.png";
-import i5Labsa from "@/assets/images/i5_labsa.png";
-import i6Packaging from "@/assets/images/i6_packaging.png";
+import styles from "./Industries.module.css";
+import i1Soap from "@/assets/images/industries/i1_soap.webp";
+import i2Detergent from "@/assets/images/industries/i2_detergent.webp";
+import i3Spray from "@/assets/images/industries/i3_spray.webp";
+import i4Bakery from "@/assets/images/industries/i4_bakery.webp";
+import i5Labsa from "@/assets/images/industries/i5_labsa.webp";
+import i6Packaging from "@/assets/images/industries/i6_packaging.webp";
 
 const industries = [
   {
