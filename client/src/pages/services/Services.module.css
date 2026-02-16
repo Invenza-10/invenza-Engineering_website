@@ -1,0 +1,145 @@
+/* ================================
+   HERO SECTION
+================================ */
+.hero {
+  padding: clamp(40px, 6vw, 60px) 20px;
+
+  background: #ffffff;
+}
+
+.heroContainer {
+  max-width: 1700px;
+  padding: clamp(40px, 6vw, 60px) clamp(20px, 5vw, 80px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 5vw, 40px);
+  align-items: center;
+}
+
+/* ----------------
+   LEFT CONTENT
+----------------- */
+.heroText h1 {
+  line-height: 1.2;
+}
+
+.heroText p {
+  line-height: 1.7;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 50px);
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.statItem {
+  flex: 1; /* make each stat take equal width */
+  text-align: center; /* center the text inside */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.statNumber {
+  font-size: clamp(36px, 4vw, 50px);
+  font-weight: 600;
+  color: #0099ff;
+}
+
+.statLabel {
+  font-size: clamp(16px, 1.4vw, 18px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #222222;
+  
+}
+
+.divider {
+  width: 3px;
+  height: clamp(80px, 12vw, 140px);
+  background: linear-gradient(to bottom, #00a5fe, #d3d3d31a 130%);
+}
+
+/* CTA Button */
+.ctaButton {
+  width: fit-content;
+  transition: background 0.3s ease;
+}
+
+
+/* ----------------
+   RIGHT IMAGE
+----------------- */
+.heroImages {
+  width: clamp(280px, 35vw, 720px);
+  height: clamp(280px, 35vw, 720px);
+  justify-self: right;
+  align-self: center;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.heroImages img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+  .stats {
+    gap: clamp(16px, 3vw, 32px);
+  }
+}
+
+@media (max-width: 900px) {
+  .heroContainer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .heroImages {
+    width: 100%;
+    height: clamp(220px, 50vw, 400px);
+    justify-self: center;
+    margin-top: clamp(24px, 4vw, 36px);
+  }
+
+  .statItem {
+    align-items: center;
+  }
+  
+
+  /* .divider {
+    display: none;
+  } */
+}
+
+@media (max-width: 480px) {
+  .heroText h1 {
+    font-size: clamp(24px, 5vw, 36px);
+  }
+
+  .heroText p {
+    font-size: clamp(16px, 3.5vw, 18px);
+  }
+
+  .statNumber {
+    font-size: clamp(28px, 5vw, 36px);
+  }
+
+  .statLabel {
+    font-size: clamp(14px, 3.5vw, 18px);
+  }
+
+  .ctaButton {
+    width: fit-content;
+  }
+}

@@ -1,0 +1,49 @@
+.projectsNav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: clamp(20px, 4vw, 30px);
+}
+
+.navBtn {
+  width: clamp(42px, 5vw, 56px); /* FIXED: % causes layout issues */
+  height: clamp(42px, 5vw, 56px);
+  border-radius: 8px;
+  border: 1px solid #08080823;
+  background: #fff;
+  font-size: clamp(20px, 2.5vw, 30px);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+}
+
+.navBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.right {
+  transform: rotate(360deg);
+}
+
+.navBtn:hover {
+  background: #00A5FE14;
+  border: 1px solid #00A5FE29;
+  color: #00A5FE;
+}
+
+.navBtn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.right svg {
+  transform: rotate(180deg);
+}
+
+.navBtn svg path {
+  stroke: currentColor; /* 🔑 CRITICAL */
+}

@@ -1,0 +1,156 @@
+.footer {
+  background: #212121;
+  color: #cccccc;
+  padding: clamp(40px, 6vw, 80px);
+}
+
+.footerContainer {
+  max-width: 1600px;
+  margin: auto;
+  /* padding: 0 20px; */
+  padding-bottom: clamp(32px, 4vw, 48px);
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(40px, 6vw, 80px);
+  border-bottom: 1px solid #00A5FE;
+}
+
+/* Logo */
+.logoImg {
+  width: clamp(200px, 25vw, 300px); /* CHANGED: fluid scaling */
+  height: auto;                     /* CHANGED: preserve aspect ratio */
+  max-width: 100%;                  /* CHANGED: prevent overflow */
+  object-fit: contain;              /* CHANGED: safe for any logo shape */
+  display: block;                   /* for logo fit */
+  color: white ;
+}
+
+/* Columns */
+.footerCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerCol h3 {
+  color: #ffffff;
+  margin-bottom: clamp(14px, 2vw, 20px);
+  font-weight: 400;
+}
+
+.footerCol p,
+.footerCol li {
+  font-size: clamp(13px, 2vw, 15px);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.footerCol ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footerCol a {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+.footerCol a:hover {
+  color: #1e90ff;
+}
+
+/* Description column */
+.desc {
+  gap: clamp(18px, 3vw, 25px);
+}
+
+/* Socials */
+.socials {
+  display: flex;
+  gap: 12px;
+}
+
+.socials span {
+  width: clamp(36px, 4vw, 40px);
+  height: clamp(36px, 4vw, 40px);
+  font-size: clamp(18px, 2.5vw, 24px);
+  border-radius: 6px;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #00A5FE;
+  background: #fff;
+}
+
+/* Company column */
+.company {
+  justify-self: center;
+}
+
+/* Address column */
+.address {
+  gap: clamp(32px, 5vw, 70px);
+}
+
+/* Bottom bar */
+.footerBottom {
+  margin-top: clamp(24px, 4vw, 40px);
+  /* padding: 20px; */
+  text-align: center;
+  font-size: clamp(12px, 2vw, 16px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footerContainer {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+  }
+
+  .socials {
+    justify-self: start;
+  }
+
+  /* prevent weird centering on tablet */
+  .company {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 600px) {
+  .footerContainer {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  /* Reset column alignment */
+  .footerCol {
+    align-items: left;
+  }
+
+  /* Description text readability */
+  .desc p {
+    max-width: 36ch;
+  }
+
+  .socials {
+    justify-content: left;
+  }
+
+  /* Company links should be centered */
+  .company ul {
+    align-items: left;
+  }
+
+  /* Address spacing */
+  .address {
+    gap: clamp(20px, 6vw, 32px);
+  }
+
+  /* Social icons centered */
+  .socials {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,212 @@
+/* ================================
+   ROOT NAVBAR
+================================ */
+.navbar {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+/* ================================
+   TOP BAR
+================================ */
+.topBarContainer {
+  width: 100%;
+  background: #ffffff;
+  padding-block: clamp(14px, 2.5vw, 26px);
+}
+
+.topBar {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding-inline: clamp(20px, 5vw, 80px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(20px, 3vw, 40px);
+}
+
+/* Logo */
+.logoImg {
+  width: clamp(200px, 25vw, 300px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  color: black;
+}
+
+/* Contact Info */
+.contactInfo {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.contactLabel {
+  margin: 0;
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 500;
+}
+
+.contactValue {
+  margin: 0;
+  font-size: clamp(14px, 1.1vw, 15px);
+  color: #777;
+}
+
+.divider {
+  width: 1px;
+  height: 32px;
+  background: #e0e0e0;
+}
+
+/* ================================
+   BOTTOM NAV
+================================ */
+.bottomNavContainer {
+  width: 100%;
+  background: linear-gradient(90deg, #028DD9, #3CB7FA, #028DD9);
+  padding-block: clamp(14px, 2vw, 22px);
+}
+
+.bottomNav {
+  width: 100%;
+  max-width: 1900px;
+  margin: 0 auto;
+  padding-inline: clamp(20px, 5vw, 80px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 4vw, 50px);
+}
+
+/* Nav Links */
+.bottomNav a {
+  text-decoration: none;
+  color: #003d5c;
+  font-weight: 500;
+  font-size: clamp(14px, 1.2vw, 20px);
+  transition: color 0.25s ease;
+}
+
+.bottomNav a:hover,
+.bottomNav a:focus-visible {
+  color: #ffffff;
+}
+
+.bottomNav .active {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* ================================
+   HAMBURGER
+================================ */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.hamburger:hover {
+  background: rgba(0, 157, 255, 0.12);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: clamp(20px, 5vw, 80px);
+
+  width: min(220px, 90vw);
+  padding: clamp(14px, 3vw, 20px);
+
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  z-index: 200;
+}
+
+.dropdownMenu a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.dropdownMenu a:hover {
+  background: #f4f4f4;
+  padding-left: 13px;
+}
+
+.navLinks a.active,
+.dropdownMenu a.active {
+  color: #333;
+}
+
+.dropdownMenu a.active {
+  background: rgba(0, 157, 255, 0.12);
+}
+
+/* ================================
+   MOBILE MENU
+================================ */
+.mobileMenu {
+  width: 100%;
+  background: #1c7fc5;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 24px clamp(20px, 5vw, 80px);
+}
+
+.mobileMenu a {
+  text-decoration: none;
+  /* color: #ffffff; */
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+  .contactInfo {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bottomNavContainer {
+    padding-block: clamp(1px, 2vw, 22px);
+  }
+
+  .contactInfo {
+    display: none;
+  }
+
+  .bottomNav {
+    justify-content: flex-end;
+  }
+
+  .bottomNav a {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    padding: 0px;
+  }
+}
