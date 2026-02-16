@@ -1,4 +1,4 @@
-import styles from "./Reachus.module.css";
+import styles from "./reachus.module.css";
 
 import LocationIcon from "@/assets/icons/location.svg?react";
 import InternetIcon from "@/assets/icons/ReachUs/internet.svg?react";
