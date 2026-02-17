@@ -11,13 +11,15 @@ export default function ReachUs() {
       label: "Address",
       Icon: LocationIcon,
       value:
-        "NO 25, 2nd Floor, 1st Cross, Suprabhathanagar, Bangalore, North Karnataka, India - 560073",
+        "NO 25, 2nd Floor, 1st Cross, Suprabhathanagar, Bengaluru, North Karnataka, India - 560073",
     },
     {
       label: "Phone",
       Icon: PhoneIcon,
-      value: "+91 9311892538",
-      link: "tel:+919311892538",
+      values: [
+        { display: "+91 9311800008", link: "tel:+919311800008" },
+        { display: "+91 9876543210", link: "tel:+919876543210" },
+      ],
     },
     {
       label: "Email",
@@ -44,7 +46,7 @@ export default function ReachUs() {
               key={index}
               label={item.label}
               Icon={item.Icon}
-              value={item.value}
+              value={item.values || item.value}
               link={item.link}
             />
           ))}
@@ -67,7 +69,14 @@ function ContactCard({ label, Icon, value, link }) {
       </div>
 
       <div className={styles.value}>
-        {link ? (
+        {Array.isArray(value) ? (
+          value.map((item, index) => (
+            <span key={index}>
+              <a href={item.link}>{item.display}</a>
+              {index < value.length - 1 && " | "}
+            </span>
+          ))
+        ) : link ? (
           <a
             href={link}
             target={link.startsWith("http") ? "_blank" : undefined}

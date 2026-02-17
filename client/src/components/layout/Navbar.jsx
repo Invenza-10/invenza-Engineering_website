@@ -19,7 +19,11 @@ export default function Navbar() {
           <div className={styles.contactInfo}>
             <div>
               <p className={styles.contactLabel}>Call us</p>
-              <p className={styles.contactValue}>+91 9311892538</p>
+              <p className={styles.contactValue}>
+                <a href="tel:+919311892538">+91 9311892538</a>
+                {" | "}
+                <a href="tel:+919019848943">9019848943</a>
+              </p>
             </div>
 
             <div className={styles.divider}></div>

@@ -4,11 +4,12 @@ import ArrowIcon from "@/assets/icons/arrow.svg?react";
 
 function Contact({ title }) {
   const countries = [
-    "Service 1",
-    "Service 2",
-    "Service 3",
-    "Service 4",
-    "Service 5",
+    "Soap Production Machinery",
+    "Detergent Powder Production Systems",
+    "Spray Drying Tower Systems",
+    "Bakery, Biscuit & Confectionery Machinery",
+    "LABSA & Sulphonation Plant Equipment",
+    "Packaging & Automation Solutions",
   ];
 
   const [errors, setErrors] = useState({});

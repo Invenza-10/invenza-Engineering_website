@@ -87,7 +87,7 @@ function Footer() {
           <div>
             <h3>Address</h3>
             <p>
-              NO 25, 2nd Floor, 1st Cross, Suprabhathanagar, Banglore, North
+              NO 25, 2nd Floor, 1st Cross, Suprabhathanagar, Bengaluru, North
               Karnataka, India - 560073
             </p>
           </div>
@@ -95,7 +95,11 @@ function Footer() {
           <div>
             <h3>Contact</h3>
             <p>sales@invenzaengineering.com</p>
-            <p>+91 9311892538</p>
+            <p>
+              <a href="tel:+919311892538">+91 9311892538</a>
+              {" | "}
+              <a href="tel:+919019848943">9019848943</a>
+            </p>
           </div>
         </div>
       </div>
