@@ -93,7 +93,7 @@
   width: 100%;
 
   /* CHANGED: responsive image height */
-  height: clamp(220px, 35vw, 450px);
+  height: clamp(200px, 35vw, 500px);
 
   border-radius: 13px;
   overflow: hidden; /* CHANGED: prevents overflow */
@@ -101,8 +101,25 @@
 
 .image img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover; /* CHANGED: consistent crop */
+  display: block;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper :global(.swiper-slide) {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper :global(.swiper-slide img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
