@@ -105,7 +105,7 @@ function Footer() {
       </div>
 
       <div className={styles.footerBottom}>
-        © Copyright 2024, All Rights Reserved by Invenza Engineering
+        © Copyright 2026, All Rights Reserved by Invenza Engineering
       </div>
     </footer>
   );

@@ -1,10 +1,10 @@
 import styles from "./industries.module.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/navigation";
+// import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import i1Soap1 from "@/assets/images/industries/i1_soap1.webp";
@@ -106,14 +106,14 @@ export default function IndustriesPage() {
             {/* IMAGE BLOCK */}
             <div className={styles.image}>
               <Swiper
-                modules={[Navigation, Pagination, Autoplay]}
-                navigation
+                modules={[Pagination, Autoplay]}
                 pagination={{ clickable: true }}
                 autoplay={{
                   delay: 4000,
                   disableOnInteraction: false,
                 }}
                 loop
+                allowTouchMove={true}
                 className={styles.swiper}
               >
                 {item.images.map((img, imgIndex) => (
