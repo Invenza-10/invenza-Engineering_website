@@ -1,9 +1,10 @@
 import styles from "./Contact.module.css";
 import { useState } from "react";
-import ArrowIcon from "@/assets/icons/arrow.svg?react";
+import emailjs from "@emailjs/browser";
+import { submitToGoogleSheet } from "@/lib/googleSheets";
 
 function Contact({ title }) {
-  const countries = [
+  const services = [
     "Soap Production Machinery",
     "Detergent Powder Production Systems",
     "Spray Drying Tower Systems",
@@ -43,7 +44,10 @@ function Contact({ title }) {
     }
 
     // Phone (optional but validated if filled)
-    if (data.phone && !/^[0-9+\-\s()]{7,20}$/.test(data.phone)) {
+    if (
+      data.phone &&
+      !/^[0-9+\-\s()]{7,20}$/.test(data.phone)
+    ) {
       newErrors.phone = "Invalid phone number";
     }
 
@@ -60,7 +64,8 @@ function Contact({ title }) {
 
     if (status === "loading") return;
 
-    const formData = new FormData(e.target);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
     const validationErrors = validate(data);
@@ -73,38 +78,56 @@ function Contact({ title }) {
     setErrors({});
     setStatus("loading");
 
-    data.formType = "service";
-
     try {
-      await fetch(
-        import.meta.env.VITE_GOOGLE_SCRIPT_URL,
-        {
-          method: "POST",
-          mode: "no-cors",
-          body: JSON.stringify(data),
-        },
-      );
+      await Promise.all([
+        emailjs.send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          {
+            name: data.name,
+            email: data.email,
+            serviceType: data.serviceType,
+            serialNumber: data.serialNumber,
+            phone: data.phone,
+            company: data.company,
+            description: data.description,
+            formType: "service",
+          },
+          {
+            publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+          }
+        ),
+        submitToGoogleSheet("service", data),
+      ]);
 
       setStatus("success");
-      e.target.reset();
-
-      setTimeout(() => setStatus(""), 4000);
+      form.reset();
     } catch (error) {
+      console.error("Service enquiry submission failed:", error);
       setStatus("error");
+    } finally {
       setTimeout(() => setStatus(""), 4000);
     }
   };
 
   return (
-    <section id="contact" className={styles.contact} style={{background: "#ffffff" }}>
+    <section
+      id="contact"
+      className={styles.contact}
+      style={{ background: "#ffffff" }}
+    >
       <div className={styles.contactContainer}>
         {/* Left content */}
         <div className={styles.contactInfo}>
-          <h1>{ title }</h1>
+          <h1>{title}</h1>
         </div>
 
         {/* Form */}
-        <form className={styles.contactForm} onSubmit={handleSubmit}>
+        <form
+          className={styles.contactForm}
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <div className={styles.formInputs}>
             {/* Name */}
             <div>
@@ -115,7 +138,9 @@ function Contact({ title }) {
                 className={errors.name ? styles.inputError : ""}
               />
               {errors.name && (
-                <span className={styles.fieldError}>{errors.name}</span>
+                <span className={styles.fieldError}>
+                  {errors.name}
+                </span>
               )}
             </div>
 
@@ -128,7 +153,9 @@ function Contact({ title }) {
                 className={errors.email ? styles.inputError : ""}
               />
               {errors.email && (
-                <span className={styles.fieldError}>{errors.email}</span>
+                <span className={styles.fieldError}>
+                  {errors.email}
+                </span>
               )}
             </div>
 
@@ -142,14 +169,18 @@ function Contact({ title }) {
                 <option value="" disabled>
                   Select service type
                 </option>
-                {countries.map((country) => (
-                  <option key={country} value={country}>
-                    {country}
+
+                {services.map((service) => (
+                  <option key={service} value={service}>
+                    {service}
                   </option>
                 ))}
               </select>
+
               {errors.serviceType && (
-                <span className={styles.fieldError}>{errors.serviceType}</span>
+                <span className={styles.fieldError}>
+                  {errors.serviceType}
+                </span>
               )}
             </div>
 
@@ -162,7 +193,9 @@ function Contact({ title }) {
                 className={errors.serialNumber ? styles.inputError : ""}
               />
               {errors.serialNumber && (
-                <span className={styles.fieldError}>{errors.serialNumber}</span>
+                <span className={styles.fieldError}>
+                  {errors.serialNumber}
+                </span>
               )}
             </div>
 
@@ -175,36 +208,47 @@ function Contact({ title }) {
                 className={errors.phone ? styles.inputError : ""}
               />
               {errors.phone && (
-                <span className={styles.fieldError}>{errors.phone}</span>
+                <span className={styles.fieldError}>
+                  {errors.phone}
+                </span>
               )}
             </div>
 
             {/* Company */}
             <div>
-              <input name="company" type="text" placeholder="Company" />
+              <input
+                name="company"
+                type="text"
+                placeholder="Company"
+              />
             </div>
 
-            {/* Description Full Width */}
+            {/* Description */}
             <div style={{ gridColumn: "1 / -1" }}>
               <textarea
                 name="description"
                 placeholder="Description"
-                className={errors.description ? styles.inputError : ""}
+                className={
+                  errors.description ? styles.inputError : ""
+                }
               />
               {errors.description && (
-                <span className={styles.fieldError}>{errors.description}</span>
+                <span className={styles.fieldError}>
+                  {errors.description}
+                </span>
               )}
             </div>
           </div>
 
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={status === "loading"}
             className={`
-    ${styles.submitButton}
-    ${status === "success" ? styles.success : ""}
-    ${status === "error" ? styles.error : ""}
-  `}
+              ${styles.submitButton}
+              ${status === "success" ? styles.success : ""}
+              ${status === "error" ? styles.error : ""}
+            `}
           >
             {status === "loading"
               ? "Submitting..."
